@@ -1,113 +1,722 @@
 @import "tailwindcss";
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  color: #e5e7eb;
+  background: #080b14;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
+html,
+body,
+#root {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(99, 102, 241, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(139, 92, 246, 0.14),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #090d1a, #0c1020 55%, #080b14);
 }
 
-code {
+
+/* =================================
+   LINKS
+================================= */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =================================
+   INPUTS
+================================= */
+
+input,
+textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+input {
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.75);
+
+  border: 1px solid rgba(148, 163, 184, 0.22);
+
+  transition: 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(129, 140, 248, 0.7);
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =================================
+   TEXTAREA
+================================= */
+
+textarea {
+  color: #e2e8f0;
+
+  background: rgba(10, 16, 32, 0.8);
+
+  border: 1px solid rgba(148, 163, 184, 0.2);
+
+  border-radius: 16px;
+
+  line-height: 1.7;
+
+  transition: 0.25s ease;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =================================
+   BUTTONS
+================================= */
+
+button {
+  font-family: inherit;
+
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  box-shadow:
+    0 8px 22px rgba(79, 70, 229, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(99, 102, 241, 0.35);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+
+/* =================================
+   GLASS EFFECT
+================================= */
+
+.glass {
+  background: rgba(15, 23, 42, 0.6);
+
+  border: 1px solid rgba(148, 163, 184, 0.15);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+
+/* =================================
+   CLIP CARDS
+================================= */
+
+.clip-card {
+  background: rgba(15, 23, 42, 0.62);
+
+  border: 1px solid rgba(148, 163, 184, 0.16);
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.18);
+
+  transition: 0.25s ease;
+}
+
+.clip-card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(129, 140, 248, 0.3);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.28),
+    0 0 30px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =================================
+   SCROLLBAR
+================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  button {
+    max-width: 100%;
+  }
+}
+
+/* =================================
+   CLIPS PAGE POLISH
+================================= */
+
+/* Search bar */
+input[placeholder*="Search"],
+input[placeholder*="search"] {
+  width: 100%;
+  max-width: 680px;
+  height: 52px;
+
+  padding: 0 18px;
+
+  border-radius: 14px;
+
   font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+
+  background: rgba(15, 23, 42, 0.72);
+
+  border: 1px solid rgba(148, 163, 184, 0.2);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+input[placeholder*="Search"]:hover,
+input[placeholder*="search"]:hover {
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+
+/* =================================
+   CLIP CARD GRID
+================================= */
+
+.grid {
+  width: 100%;
+}
+
+
+/* =================================
+   INDIVIDUAL CLIP CARD
+================================= */
+
+.grid > div {
+  position: relative;
+
+  background: rgba(15, 23, 42, 0.62);
+
+  border: 1px solid rgba(148, 163, 184, 0.16);
+
+  border-radius: 18px;
+
+  padding: 20px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.grid > div:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(129, 140, 248, 0.35);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.28),
+    0 0 28px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =================================
+   CARD TEXT
+================================= */
+
+.grid > div h2,
+.grid > div h3 {
+  color: #f8fafc;
+
+  font-weight: 700;
+
+  letter-spacing: -0.2px;
+}
+
+.grid > div p {
+  color: #94a3b8;
+
+  line-height: 1.65;
+}
+
+
+/* =================================
+   CARD BUTTONS
+================================= */
+
+.grid > div button {
+  min-height: 36px;
+
+  padding: 7px 13px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+/* =================================
+   SECONDARY BUTTON FEEL
+================================= */
+
+.grid > div button:not(:first-child) {
+  box-shadow: none;
+}
+
+
+/* =================================
+   EMPTY STATE
+================================= */
+
+.grid:empty::after {
+  content: "No clips found";
+
+  display: block;
+
+  width: 100%;
+
+  padding: 60px 20px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 16px;
+}
+
+
+/* =================================
+   RESPONSIVE CLIPS
+================================= */
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  input[placeholder*="Search"],
+  input[placeholder*="search"] {
+    max-width: 100%;
+  }
+
+  .grid > div {
+    padding: 17px;
+  }
+}
+
+/* =========================================
+   CLIPS - FINAL CARD & SHARE FIX
+========================================= */
+
+/* Individual clip card */
+.flex.flex-col > .border {
+  position: relative !important;
+
+  width: 100%;
+
+  padding: 18px !important;
+
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+
+  border-radius: 16px !important;
+
+  background: rgba(15, 23, 42, 0.65) !important;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.2);
+
+  overflow: visible !important;
+
+  transition: all 0.25s ease;
+}
+
+.flex.flex-col > .border:hover {
+  border-color: rgba(129, 140, 248, 0.4) !important;
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================================
+   ACTION BUTTON ROW
+========================================= */
+
+.flex.flex-col > .border > .flex {
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: space-between !important;
+
+  gap: 12px !important;
+
+  width: 100%;
+}
+
+
+/* Normal action buttons */
+
+.flex.flex-col > .border > .flex > button,
+.flex.flex-col > .border > .flex > .relative > button {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 40px;
+
+  padding: 8px 14px !important;
+
+  border-radius: 10px !important;
+
+  font-size: 14px !important;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   SHARE CONTAINER
+========================================= */
+
+.flex.flex-col > .border > .flex > .relative {
+  position: relative !important;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/* Share button */
+
+.flex.flex-col > .border > .flex > .relative > button {
+  width: 100%;
+}
+
+
+/* =========================================
+   SHARE DROPDOWN
+========================================= */
+
+.flex.flex-col > .border > .flex > .relative > .absolute {
+  position: absolute !important;
+
+  top: calc(100% + 10px) !important;
+
+  right: 0 !important;
+
+  left: auto !important;
+
+  width: 190px !important;
+
+  padding: 6px !important;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px !important;
+
+  background: rgba(12, 18, 35, 0.98) !important;
+
+  border: 1px solid rgba(129, 140, 248, 0.25) !important;
+
+  border-radius: 14px !important;
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(99, 102, 241, 0.08) !important;
+
+  z-index: 9999 !important;
+}
+
+
+/* =========================================
+   SHARE OPTIONS
+========================================= */
+
+.flex.flex-col > .border > .flex > .relative > .absolute button {
+  width: 100% !important;
+
+  min-height: 38px !important;
+
+  height: auto !important;
+
+  margin: 0 !important;
+
+  padding: 9px 12px !important;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: none !important;
+
+  border-radius: 9px !important;
+
+  background: transparent !important;
+
+  color: #cbd5e1 !important;
+
+  font-size: 13px !important;
+
+  font-weight: 500;
+
+  box-shadow: none !important;
+
+  transform: none !important;
+
+  text-align: left;
+}
+
+
+/* Share option hover */
+
+.flex.flex-col > .border > .flex > .relative > .absolute button:hover {
+  background: rgba(99, 102, 241, 0.18) !important;
+
+  color: #ffffff !important;
+
+  transform: none !important;
+
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   CARD DATE
+========================================= */
+
+.flex.flex-col > .border > div:last-child {
+  margin-top: 14px !important;
+
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .flex.flex-col > .border > .flex {
+    gap: 7px !important;
+
+    flex-wrap: wrap;
+  }
+
+  .flex.flex-col > .border > .flex > button,
+  .flex.flex-col > .border > .flex > .relative {
+    flex: 1 1 calc(50% - 7px);
+  }
+
+  .flex.flex-col > .border > .flex > .relative > .absolute {
+    right: 0 !important;
+
+    width: 180px !important;
+  }
+}
+
+/* =========================================
+   SHARE DROPDOWN - FIX OVERLAPPING CARDS
+========================================= */
+
+/* The card containing an open share menu should stay above other cards */
+.flex.flex-col > .border:has(.absolute) {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+/* Other cards stay below */
+.flex.flex-col > .border {
+  position: relative;
+  z-index: 1;
+}
+
+/* Share dropdown itself */
+.flex.flex-col > .border > .flex > .relative > .absolute {
+  z-index: 9999 !important;
+
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+
+  width: 190px !important;
+
+  max-height: none !important;
+
+  overflow: visible !important;
+
+  padding: 6px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+
+  background: rgba(10, 15, 30, 0.98) !important;
+
+  border: 1px solid rgba(129, 140, 248, 0.3) !important;
+
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(99, 102, 241, 0.12) !important;
+}
+
+/* Every share option gets its own space */
+.flex.flex-col > .border > .flex > .relative > .absolute button {
+  flex: 0 0 auto !important;
+
+  width: 100% !important;
+
+  min-height: 38px !important;
+  height: 38px !important;
+
+  margin: 0 !important;
+  padding: 8px 12px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  border-radius: 9px !important;
+
+  background: transparent !important;
+
+  color: #cbd5e1 !important;
+
+  box-shadow: none !important;
+
+  transform: none !important;
+}
+
+.flex.flex-col > .border > .flex > .relative > .absolute button:hover {
+  background: rgba(99, 102, 241, 0.18) !important;
+  color: white !important;
 }
