@@ -1,5 +1,5 @@
 /* =========================================
-   CLIPVAULT - CLEAN PREMIUM UI
+   BASIC RESET
 ========================================= */
 
 * {
@@ -16,33 +16,14 @@ body,
 }
 
 body {
-  background:
-    radial-gradient(
-      circle at 15% 10%,
-      rgba(99, 102, 241, 0.14),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(139, 92, 246, 0.10),
-      transparent 35%
-    ),
-    #080c1c;
-
+  background: #080c1c;
   color: #e5e7eb;
-
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 
 /* =========================================
-   APP WRAPPER
+   APP
 ========================================= */
 
 #root > div {
@@ -55,144 +36,176 @@ body {
    NAVBAR
 ========================================= */
 
-#root nav {
+/* Navbar.jsx has a div, not nav */
+
+#root > div > div > div:first-child {
   width: 100%;
+  min-height: 62px;
 
-  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  gap: 20px;
 
-  gap: 10px !important;
+  padding: 10px 15px;
 
-  background: rgba(8, 12, 28, 0.82);
-
-  border-bottom: 1px solid rgba(148, 163, 184, 0.10);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  position: sticky;
-  top: 0;
-
-  z-index: 1000;
+  background: #0b1024;
+  border-bottom: 1px solid #202842;
 }
 
 
 /* Navbar links */
 
-#root nav a {
-  min-width: 100px;
+#root > div > div > div:first-child a {
+  min-width: 90px;
 
-  padding: 10px 20px;
+  padding: 10px 18px;
+
+  text-align: center;
+  text-decoration: none;
 
   color: #94a3b8;
 
-  text-decoration: none;
-
-  text-align: center;
-
-  font-size: 15px;
-
-  font-weight: 600;
-
   border-radius: 10px;
 
-  transition: all 0.25s ease;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-#root nav a:hover {
-  color: #ffffff;
-
-  background: rgba(99, 102, 241, 0.12);
-
-  transform: translateY(-1px);
-}
-
-
-/* =========================================
-   CLIP PAGE CONTAINER
-========================================= */
-
-/*
-   Router structure:
-
-   nav
-   div -> Clip
-
-   We keep the Clip page narrow and centered.
-*/
-
-#root nav + div {
-  width: min(760px, calc(100% - 32px)) !important;
-
-  margin: 0 auto !important;
-
-  padding: 40px 0 80px !important;
+#root > div > div > div:first-child a:hover {
+  color: white;
+  background: #171d45;
 }
 
 
 /* =========================================
-   SEARCH
+   HOME PAGE
 ========================================= */
 
-#root nav + div > input[type="search"] {
+/* Home container */
+
+#root > div > div > div:last-child {
+  width: min(760px, calc(100% - 32px));
+
+  margin: 0 auto;
+
+  padding: 35px 0 60px;
+}
+
+
+/* Home title + button */
+
+#root > div > div > div:last-child
+  > div:first-child {
+  width: 100%;
+
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+
+/* Title input */
+
+#root input[type="text"] {
+  height: 48px;
+
+  padding: 0 15px;
+
+  border: 1px solid #26304d;
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #10172b;
+  color: white;
+}
+
+
+/* Home button */
+
+#root > div > div > div:last-child
+  > div:first-child
+  > button {
+  height: 48px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #7658ed;
+  color: white;
+
+  cursor: pointer;
+}
+
+
+/* Textarea */
+
+#root textarea {
+  width: 100%;
+  min-width: 0;
+
+  padding: 15px;
+
+  border: 1px solid #26304d;
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #10172b;
+  color: white;
+
+  resize: vertical;
+}
+
+
+/* =========================================
+   CLIPS PAGE
+========================================= */
+
+/* Search */
+
+#root input[type="search"] {
   display: block;
 
-  width: 100% !important;
-
-  min-width: 0 !important;
-
-  max-width: none !important;
+  width: min(760px, calc(100% - 32px));
 
   height: 52px;
 
-  margin: 0 0 26px !important;
+  margin: 35px auto 25px;
 
-  padding: 0 18px !important;
+  padding: 0 18px;
 
-  color: #e2e8f0;
-
-  background: rgba(15, 23, 42, 0.72);
-
-  border: 1px solid rgba(148, 163, 184, 0.18);
-
+  border: 1px solid #26304d;
   border-radius: 14px;
 
   outline: none;
 
+  background: #10172b;
+  color: white;
+
   font-size: 14px;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.18);
-
-  transition: all 0.25s ease;
 }
 
-#root nav + div > input[type="search"]::placeholder {
+#root input[type="search"]::placeholder {
   color: #64748b;
 }
 
-#root nav + div > input[type="search"]:focus {
-  border-color: rgba(129, 140, 248, 0.65);
 
-  box-shadow:
-    0 0 0 3px rgba(99, 102, 241, 0.10),
-    0 12px 35px rgba(0, 0, 0, 0.22);
-}
+/* Clips list */
 
+#root input[type="search"] + div {
+  width: min(760px, calc(100% - 32px));
 
-/* =========================================
-   CLIPS LIST
-========================================= */
+  margin: 0 auto;
 
-#root nav + div > .flex.flex-col {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 
-  gap: 18px !important;
-
-  margin-top: 0 !important;
+  gap: 18px;
 }
 
 
@@ -200,78 +213,51 @@ body {
    CLIP CARD
 ========================================= */
 
-#root nav + div > .flex.flex-col > .border {
+#root input[type="search"] + div > .border {
   width: 100%;
+  min-width: 0;
 
-  padding: 20px !important;
+  padding: 20px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(18, 25, 48, 0.90),
-      rgba(10, 15, 31, 0.88)
-    ) !important;
+  background: #10172b;
 
-  border: 1px solid rgba(148, 163, 184, 0.15) !important;
+  border: 1px solid #26304d;
+  border-radius: 18px;
 
-  border-radius: 18px !important;
-
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.20);
-
-  overflow: visible !important;
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-#root nav + div > .flex.flex-col > .border:hover {
-  transform: translateY(-2px);
-
-  border-color: rgba(129, 140, 248, 0.32) !important;
-
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.28),
-    0 0 25px rgba(99, 102, 241, 0.06);
+  overflow: visible;
 }
 
 
-/* =========================================
-   CLIP TITLE
-========================================= */
+/* Title */
 
-#root nav + div > .flex.flex-col > .border > div:first-child {
+#root input[type="search"] + div > .border
+  > div:first-child {
   margin-bottom: 8px;
 
   color: #f1f5f9;
 
   font-size: 17px;
-
-  font-weight: 650;
+  font-weight: 600;
 
   line-height: 1.5;
 
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 
-/* =========================================
-   CLIP CONTENT
-========================================= */
+/* Content */
 
-#root nav + div > .flex.flex-col > .border > div:nth-child(2) {
+#root input[type="search"] + div > .border
+  > div:nth-child(2) {
   margin-bottom: 18px;
 
   color: #94a3b8;
 
-  font-size: 14px;
-
-  line-height: 1.65;
+  line-height: 1.6;
 
   white-space: pre-wrap;
 
+  overflow-wrap: anywhere;
   word-break: break-word;
 }
 
@@ -280,76 +266,55 @@ body {
    ACTION BUTTONS
 ========================================= */
 
-#root nav + div > .flex.flex-col > .border > .flex {
+#root input[type="search"] + div > .border
+  > .flex {
   width: 100%;
 
   display: grid !important;
 
-  grid-template-columns:
-    repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 
-  gap: 9px !important;
-
-  align-items: center;
+  gap: 10px;
 }
 
 
-/* All action buttons */
+/* Buttons */
 
-#root nav + div > .flex.flex-col > .border > .flex > button,
-#root nav + div > .flex.flex-col > .border > .flex > .relative > button {
+#root input[type="search"] + div > .border
+  > .flex button {
   width: 100%;
+  min-width: 0;
 
-  height: 38px;
+  height: 40px;
 
-  padding: 7px 10px !important;
+  padding: 8px 10px;
 
-  color: #e2e8f0;
+  border: none;
+  border-radius: 10px;
 
-  background: rgba(99, 102, 241, 0.14);
-
-  border: 1px solid rgba(129, 140, 248, 0.18);
-
-  border-radius: 9px !important;
-
-  font-size: 13px !important;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-
-/* Links inside Edit / View */
-
-#root nav + div > .flex.flex-col > .border > .flex a {
-  color: inherit;
-
-  text-decoration: none;
-}
-
-
-/* Hover */
-
-#root nav + div > .flex.flex-col > .border > .flex > button:hover,
-#root nav + div > .flex.flex-col > .border > .flex > .relative > button:hover {
+  background: #7658ed;
   color: white;
 
-  background: rgba(99, 102, 241, 0.30);
+  font-size: 14px;
 
-  border-color: rgba(129, 140, 248, 0.40);
+  cursor: pointer;
+}
 
-  transform: translateY(-1px);
+
+/* Button hover */
+
+#root input[type="search"] + div > .border
+  > .flex button:hover {
+  background: #6648dc;
 }
 
 
 /* =========================================
-   SHARE
+   SHARE DROPDOWN
 ========================================= */
 
-#root nav + div > .flex.flex-col > .border > .flex > .relative {
+#root input[type="search"] + div > .border
+  > .flex > .relative {
   position: relative;
 
   min-width: 0;
@@ -358,84 +323,51 @@ body {
 
 /* Dropdown */
 
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > .flex
-  > .relative
-  > .absolute {
+#root input[type="search"] + div > .border
+  > .flex > .relative > .absolute {
   top: calc(100% + 8px) !important;
-
   right: 0 !important;
 
-  width: 190px !important;
+  width: 180px !important;
 
   padding: 6px !important;
 
   display: flex !important;
-
   flex-direction: column !important;
 
   gap: 3px !important;
 
-  background: rgba(10, 15, 30, 0.98) !important;
+  background: #10172b !important;
 
-  border: 1px solid rgba(129, 140, 248, 0.25) !important;
+  border: 1px solid #303a5c !important;
+  border-radius: 12px !important;
 
-  border-radius: 13px !important;
-
-  box-shadow:
-    0 20px 45px rgba(0, 0, 0, 0.55);
-
-  z-index: 99999 !important;
+  z-index: 9999 !important;
 }
 
 
 /* Dropdown buttons */
 
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > .flex
-  > .relative
-  > .absolute
-  > button {
+#root input[type="search"] + div > .border
+  > .flex > .relative > .absolute button {
   width: 100% !important;
-
   height: 36px !important;
-
-  min-height: 36px !important;
-
-  padding: 7px 11px !important;
 
   background: transparent !important;
 
   border: none !important;
-
   border-radius: 8px !important;
 
   color: #cbd5e1 !important;
 
-  font-size: 13px !important;
-
-  font-weight: 500;
-
   text-align: left;
 
-  box-shadow: none !important;
-
-  transform: none !important;
+  cursor: pointer;
 }
 
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > .flex
-  > .relative
-  > .absolute
-  > button:hover {
-  background: rgba(99, 102, 241, 0.18) !important;
-
+#root input[type="search"] + div > .border
+  > .flex > .relative > .absolute button:hover {
+  background: #171d45 !important;
   color: white !important;
 }
 
@@ -444,174 +376,33 @@ body {
    DATE
 ========================================= */
 
-#root nav + div
-  > .flex.flex-col
-  > .border
+#root input[type="search"] + div > .border
   > div:last-child {
-  margin-top: 14px !important;
+  margin-top: 14px;
 
-  padding-top: 11px;
+  padding-top: 10px;
+
+  border-top: 1px solid #202842;
 
   color: #64748b;
 
-  border-top: 1px solid rgba(148, 163, 184, 0.08);
-
   font-size: 11px;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 650px) {
-
-  #root nav {
-    height: 62px;
-
-    gap: 4px !important;
-  }
-
-  #root nav a {
-    min-width: 85px;
-
-    padding: 9px 14px;
-
-    font-size: 14px;
-  }
-
-  #root nav + div {
-    width: calc(100% - 24px) !important;
-
-    padding-top: 25px !important;
-  }
-
-  #root nav + div
-    > .flex.flex-col
-    > .border
-    > .flex {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-/* =========================================
-   LONG CLIP CONTENT FIX
-========================================= */
-
-/* Clip card must stay within container */
-#root nav + div > .flex.flex-col > .border {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-
-  overflow: visible !important;
-}
-
-
-/* Title */
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > div:first-child {
-  max-width: 100%;
 
   overflow-wrap: anywhere;
-  word-break: break-word;
-
-  line-height: 1.5;
-
-  margin-bottom: 10px;
-}
-
-
-/* Content */
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > div:nth-child(2) {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-
-  white-space: pre-wrap !important;
-
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-
-  line-height: 1.7;
-
-  color: #a5b4c7;
-
-  margin-bottom: 20px;
-}
-
-
-/* Links / URLs inside content should also wrap */
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > div:nth-child(2) a {
-  overflow-wrap: anywhere;
-  word-break: break-all;
 }
 
 
 /* =========================================
-   ACTION BUTTONS
-========================================= */
-
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > .flex {
-  margin-top: 5px;
-
-  flex-shrink: 0;
-}
-
-
-/* =========================================
-   DATE
-========================================= */
-
-#root nav + div
-  > .flex.flex-col
-  > .border
-  > div:last-child {
-  overflow-wrap: anywhere;
-}
-
-
-/* =========================================
-   VERY LONG CONTENT
+   DESKTOP LONG CONTENT
 ========================================= */
 
 @media (min-width: 651px) {
-  #root nav + div
-    > .flex.flex-col
-    > .border
+
+  #root input[type="search"] + div > .border
     > div:nth-child(2) {
     max-height: 280px;
 
     overflow-y: auto;
-
-    padding-right: 8px;
-  }
-
-  /* Scrollbar */
-  #root nav + div
-    > .flex.flex-col
-    > .border
-    > div:nth-child(2)::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  #root nav + div
-    > .flex.flex-col
-    > .border
-    > div:nth-child(2)::-webkit-scrollbar-thumb {
-    background: rgba(129, 140, 248, 0.35);
-
-    border-radius: 10px;
   }
 }
 
@@ -621,9 +412,135 @@ body {
 ========================================= */
 
 @media (max-width: 650px) {
-  #root nav + div
-    > .flex.flex-col
-    > .border
+
+  /* Navbar */
+
+  #root > div > div > div:first-child {
+    min-height: 60px;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+  }
+
+  #root > div > div > div:first-child a {
+    min-width: 80px;
+
+    padding: 9px 12px;
+
+    font-size: 14px;
+  }
+
+
+  /* Home */
+
+  #root > div > div > div:last-child {
+    width: 100%;
+
+    padding: 20px 12px 50px;
+  }
+
+  #root > div > div > div:last-child
+    > div:first-child {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  #root > div > div > div:last-child
+    > div:first-child
+    > input {
+    width: 100%;
+
+    margin: 0 !important;
+  }
+
+  #root > div > div > div:last-child
+    > div:first-child
+    > button {
+    width: 100%;
+
+    margin: 0 !important;
+  }
+
+  #root > div > div > div:last-child
+    > div:nth-child(2) {
+    width: 100%;
+
+    margin-top: 15px;
+  }
+
+  #root > div > div > div:last-child
+    textarea {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 350px;
+  }
+
+
+  /* Clips search */
+
+  #root input[type="search"] {
+    width: calc(100% - 24px);
+
+    margin: 25px auto 20px;
+  }
+
+
+  /* Clips list */
+
+  #root input[type="search"] + div {
+    width: calc(100% - 24px);
+  }
+
+
+  /* Clip card */
+
+  #root input[type="search"] + div > .border {
+    padding: 16px;
+  }
+
+
+  /* Buttons become 2 columns */
+
+  #root input[type="search"] + div > .border
+    > .flex {
+    grid-template-columns: repeat(2, 1fr) !important;
+
+    gap: 9px;
+  }
+
+
+  /* Share button */
+
+  #root input[type="search"] + div > .border
+    > .flex
+    > .relative {
+    width: 100%;
+  }
+
+
+  /* Share dropdown */
+
+  #root input[type="search"] + div > .border
+    > .flex
+    > .relative
+    > .absolute {
+    right: 0 !important;
+
+    width: 180px !important;
+
+    max-width: calc(100vw - 40px);
+  }
+
+
+  /* Long content on mobile */
+
+  #root input[type="search"] + div > .border
     > div:nth-child(2) {
     max-height: 350px;
 
@@ -631,116 +548,112 @@ body {
   }
 }
 /* =========================================
-   FINAL CLIPS PAGE FIX
+   FINAL RESPONSIVE FIX
 ========================================= */
 
-/* Clip page main container */
-#root > div > div > div {
-  width: min(760px, calc(100% - 32px)) !important;
-  max-width: 760px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+/* Route wrapper must use full screen */
+#root > div > div {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 
-/* Search box */
-#root > div > div > div > input[type="search"] {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-}
+/* =========================================
+   MOBILE CLIPS FIX
+========================================= */
 
-
-/* Clips list */
-#root > div > div > div > .flex.flex-col {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-}
-
-
-/* Clip card */
-#root > div > div > div > .flex.flex-col > .border {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-
-  overflow: visible !important;
-}
-
-
-/* Title */
-#root > div > div > div
-  > .flex.flex-col
-  > .border
-  > div:first-child {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-
-  white-space: normal !important;
-}
-
-
-/* Content */
-#root > div > div > div
-  > .flex.flex-col
-  > .border
-  > div:nth-child(2) {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-
-  white-space: pre-wrap !important;
-
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-
-  line-height: 1.7;
-
-  overflow-x: hidden !important;
-}
-
-
-/* Buttons */
-#root > div > div > div
-  > .flex.flex-col
-  > .border
-  > .flex {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-}
-
-
-/* Share dropdown stays inside viewport */
-#root > div > div > div
-  > .flex.flex-col
-  > .border
-  > .flex
-  > .relative
-  > .absolute {
-  max-width: calc(100vw - 30px) !important;
-}
-
-
-/* Mobile */
 @media (max-width: 650px) {
 
-  #root > div > div > div {
+  /* Search */
+  #root input[type="search"] {
     width: calc(100% - 24px) !important;
-    max-width: none !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
-  #root > div > div > div
-    > .flex.flex-col
-    > .border
-    > .flex {
-    grid-template-columns: repeat(2, 1fr) !important;
+
+  /* Clips list */
+  #root input[type="search"] + div {
+    width: calc(100% - 24px) !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+
+  /* Clip card */
+  #root input[type="search"] + div > .border {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+
+  /* Buttons */
+  #root input[type="search"] + div > .border > .flex {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+
+  /* Every button */
+  #root input[type="search"] + div > .border > .flex button {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+
+  /* Long text */
+  #root input[type="search"] + div > .border
+    > div:nth-child(2) {
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+}
+
+
+/* =========================================
+   MOBILE HOME FIX
+========================================= */
+
+@media (max-width: 650px) {
+
+  /* Home page */
+  #root > div > div > div:last-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+
+  /* Title */
+  #root > div > div > div:last-child
+    > div:first-child
+    > input {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+
+  /* Button */
+  #root > div > div > div:last-child
+    > div:first-child
+    > button {
+    width: 100% !important;
+  }
+
+
+  /* Textarea */
+  #root > div > div > div:last-child
+    textarea {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 }
