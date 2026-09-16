@@ -5,7 +5,7 @@ The application allows users to create, edit, view, delete, search, copy, and sh
 
 ## Live Demo
 
-🔗 [View Live Application](https://notes-app-two-gold.vercel.app/)
+🔗 [View Live Application](https://react-notes-app-three-virid.vercel.app/)
 
 ## Features
 
